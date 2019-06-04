@@ -1,0 +1,24 @@
+package com.security.practice.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.spring.practice.utils.AuthorityType;
+
+@Entity
+@Table(name = "authority")
+public class Authority {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer authorityId;
+	
+	@Enumerated(EnumType.STRING)
+	private AuthorityType authorityName;
+
+}

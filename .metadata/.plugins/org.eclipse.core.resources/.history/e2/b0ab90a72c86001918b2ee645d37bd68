@@ -1,0 +1,7 @@
+package com.security.practice.service;
+
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+public class CustomUserDetails implements UserDetailsService{
+
+}

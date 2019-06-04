@@ -1,0 +1,5 @@
+
+“squid:S3305!"\Inject this field value directly into "getSecurityDataSource", the only method that uses it.(«ª“ø8Ö†·³¯-H˜RCRITICALZ
+CODE_SMELL
+lsquid:S3878'"8Remove this array creation and simply pass the elements.(„Â£·8ëÙË¯-H™RMINORZ
+CODE_SMELL

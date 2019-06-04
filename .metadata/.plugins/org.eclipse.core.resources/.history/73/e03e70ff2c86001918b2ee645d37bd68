@@ -1,0 +1,11 @@
+package com.security.practice.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.security.practice.entity.Users;
+
+public interface UserRepositoryDAO extends JpaRepository<Users, Integer> {
+	
+	List<Users> findByUsername(String username);
+
+}

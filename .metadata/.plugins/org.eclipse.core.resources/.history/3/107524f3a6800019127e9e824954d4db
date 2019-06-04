@@ -1,0 +1,5 @@
+package com.security.practice.repository;
+
+public interface UserRepository {
+
+}

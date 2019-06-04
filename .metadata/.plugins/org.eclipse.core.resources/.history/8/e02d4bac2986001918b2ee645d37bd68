@@ -1,0 +1,9 @@
+package com.security.practice.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.security.practice.entity.Users;
+
+public interface UserRepositoryDAO extends CrudRepository<Users, Integer> {
+
+}

@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+D:\sts study workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\433660247.index
+\spring-security-practice\src\main\java
+D:\sts study workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4025745265.index
+\spring-security-basic-security\src\main\resources

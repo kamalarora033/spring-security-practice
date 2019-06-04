@@ -1,0 +1,10 @@
+package com.security.practice.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "authority")
+public class Authority {
+
+}

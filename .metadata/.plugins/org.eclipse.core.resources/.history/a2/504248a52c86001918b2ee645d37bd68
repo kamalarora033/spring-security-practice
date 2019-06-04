@@ -1,0 +1,5 @@
+package com.security.practice.service;
+
+public class CustomUserDetails {
+
+}

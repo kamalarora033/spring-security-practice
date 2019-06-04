@@ -1,0 +1,12 @@
+package com.spring.practice.repository.impl;
+
+import java.util.Optional;
+
+import com.security.practice.entity.Users;
+import com.security.practice.repository.UserRepositoryDAO;
+
+public class UserRepositoryImpl implements UserRepositoryDAO {
+
+
+
+}

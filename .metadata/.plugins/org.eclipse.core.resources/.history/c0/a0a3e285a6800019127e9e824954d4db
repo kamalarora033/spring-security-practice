@@ -1,0 +1,71 @@
+package com.security.practice.config;
+
+import java.beans.PropertyVetoException;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "com.security.practice")
+@PropertySource("classpath:db-maria.properties")
+@EnableJpaRepositories(basePackages = "com.security.practice.repository")
+@EnableTransactionManagement
+public class DemoConfiguration {
+
+	@Autowired
+	private Environment env;
+
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws PropertyVetoException {
+		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
+		factoryBean.setDataSource(getSecurityDataSource());
+		factoryBean.setPackagesToScan(new String[] { "com.security.practice.entity" });
+		return factoryBean;
+	}
+
+	@Bean
+	public DataSource getSecurityDataSource() throws PropertyVetoException {
+		ComboPooledDataSource dataSource = new ComboPooledDataSource();
+		dataSource.setDriverClass(env.getProperty("jdbc.driver"));
+		dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
+		dataSource.setUser(env.getProperty("jdbc.username"));
+		dataSource.setPassword(env.getProperty("jdbc.password"));
+
+		dataSource.setInitialPoolSize(Integer.parseInt(env.getProperty("connection.pool.initialPoolSize")));
+		dataSource.setMinPoolSize(Integer.parseInt(env.getProperty("connection.pool.minPoolSize")));
+		dataSource.setMaxPoolSize(Integer.parseInt(env.getProperty("connection.pool.maxPoolSize")));
+		dataSource.setMaxIdleTime(Integer.parseInt(env.getProperty("connection.pool.maxIdleTime")));
+		return dataSource;
+	}
+
+	@Bean
+	public ViewResolver viewResolver() {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setPrefix("/WEB-INF/views/");
+		resolver.setSuffix(".jsp");
+		return resolver;
+	}
+	
+	 @Override
+	    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	        registry
+	            .addResourceHandler("/resources/**")
+	            .addResourceLocations("/resources/");
+	    }
+
+}

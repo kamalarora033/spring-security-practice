@@ -1,0 +1,5 @@
+package com.security.practice.controller;
+
+public class LoginController {
+
+}

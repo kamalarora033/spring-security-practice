@@ -1,0 +1,29 @@
+package com.security.practice.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.security.practice.repository.UserRepositoryDAO;
+
+@Service
+public class CustomUserDetails implements UserDetailsService{
+
+	@Autowired
+	UserRepositoryDAO userRepositoryDAO;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User user = userRepositoryDAO.findByUsername(username).orElseThrow(new UsernameNotFoundException("Username "+username+" not found."));
+		return null;
+	}
+	
+	private static Collection<? extends GrantedAuthority> getAuthorities(User user){
+		
+	}
+
+}

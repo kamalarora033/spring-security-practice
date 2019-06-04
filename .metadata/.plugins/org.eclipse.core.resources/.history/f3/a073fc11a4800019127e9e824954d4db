@@ -1,0 +1,5 @@
+package com.security.practice.entity;
+
+public class Users {
+
+}
